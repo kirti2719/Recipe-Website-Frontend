@@ -1,0 +1,278 @@
+.jhatpat-recipe {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    padding: 50px 0;
+    min-height: 100vh;
+}
+
+.background-wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.background-svg {
+    width: 100%;
+    height: 300px;
+}
+
+.curved-text {
+    fill: url(#textGradient);
+}
+
+.flowing-text {
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.text-path-1, .text-path-2 {
+    animation: flowText 20s linear infinite;
+}
+
+.text-path-2 {
+    animation-delay: -10s;
+}
+
+.jhatpat-recipe-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Important: Keep original container styles */
+.curved-images {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Base image styles */
+.image {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    position: absolute;
+    transition: all 0.5s ease;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+/* CRITICAL: Original image positions - DO NOT MODIFY */
+.recipe-card .image1 { top: 100%; left: 0%; }
+.recipe-card .image2 { top: 20%; left: 10%; }
+.recipe-card .image3 { top: 70%; right: 2%; }
+.recipe-card .image4 { top: 15%; right: 30%; }
+.recipe-card .image5 { top: 140%; left: 14%; }
+.recipe-card .image6 { bottom: -15%; right: 15%; }
+.recipe-card .image7 { left: 43%; bottom: 32%; }
+.recipe-card .image8 { bottom: -8%; right: 66%; }
+
+/* Glow effect */
+.image.glow {
+    opacity: 1;
+    transform: scale(1.1);
+    z-index: 100;
+    animation: glowEffect 2s infinite;
+}
+
+/* Recipe info box base styles */
+.recipe-info-box {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+/* Specific positioning for each info box */
+.recipe-card1 .recipe-info-box {
+    top: 220px;
+    left: -40px;
+}
+
+.recipe-card2 .recipe-info-box {
+    top: 140px;
+    left: -80px;
+}
+
+.recipe-card3 .recipe-info-box {
+    top: 190px;
+    right: -80px;
+}
+
+.recipe-card4 .recipe-info-box {
+    top: 140px;
+    right: -40px;
+}
+
+.recipe-card5 .recipe-info-box {
+    top: 260px;
+    left: -60px;
+}
+
+.recipe-card6 .recipe-info-box {
+    bottom: 140px;
+    right: -60px;
+}
+
+.recipe-card7 .recipe-info-box {
+    bottom: 160px;
+    left: -60px;
+}
+
+.recipe-card8 .recipe-info-box {
+    bottom: 120px;
+    right: -40px;
+}
+
+/* Arrow styles */
+.info-box-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+}
+
+/* Top arrows */
+.recipe-card1 .info-box-arrow,
+.recipe-card2 .info-box-arrow,
+.recipe-card3 .info-box-arrow,
+.recipe-card4 .info-box-arrow,
+.recipe-card5 .info-box-arrow {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 8px solid rgba(255, 255, 255, 0.95);
+}
+
+/* Bottom arrows */
+.recipe-card6 .info-box-arrow,
+.recipe-card7 .info-box-arrow,
+.recipe-card8 .info-box-arrow {
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: 8px solid rgba(255, 255, 255, 0.95);
+    border-bottom: none;
+}
+
+.recipe-info-box h3 {
+    color: #2A9D8F;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.recipe-info-box p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.cooking-time {
+    color: #E76F51;
+    font-weight: bold;
+    font-size: 0.9em;
+    display: block;
+}
+
+@keyframes flowText {
+    from { startOffset: 100%; }
+    to { startOffset: -100%; }
+}
+
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 5px rgba(42, 157, 143, 0.5),
+                    0 0 10px rgba(42, 157, 143, 0.5),
+                    0 0 15px rgba(42, 157, 143, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(42, 157, 143, 0.7),
+                    0 0 20px rgba(42, 157, 143, 0.7),
+                    0 0 30px rgba(42, 157, 143, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(42, 157, 143, 0.5),
+                    0 0 10px rgba(42, 157, 143, 0.5),
+                    0 0 15px rgba(42, 157, 143, 0.5);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .image {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .recipe-info-box {
+        width: 160px;
+        padding: 12px;
+    }
+    
+    .flowing-text {
+        font-size: 18px;
+    }
+
+    /* Adjust positions for medium screens */
+    .recipe-card1 .recipe-info-box { left: -30px; }
+    .recipe-card2 .recipe-info-box { left: -60px; }
+    .recipe-card3 .recipe-info-box { right: -60px; }
+    .recipe-card4 .recipe-info-box { right: -30px; }
+    .recipe-card5 .recipe-info-box { left: -40px; }
+    .recipe-card6 .recipe-info-box { right: -40px; }
+    .recipe-card7 .recipe-info-box { left: -40px; }
+    .recipe-card8 .recipe-info-box { right: -30px; }
+}
+
+@media (max-width: 480px) {
+    .image {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .recipe-info-box {
+        width: 140px;
+        padding: 10px;
+        font-size: 0.8em;
+    }
+    
+    .flowing-text {
+        font-size: 16px;
+    }
+
+    /* Adjust positions for smaller screens */
+    .recipe-card1 .recipe-info-box { left: -20px; }
+    .recipe-card2 .recipe-info-box { left: -40px; }
+    .recipe-card3 .recipe-info-box { right: -40px; }
+    .recipe-card4 .recipe-info-box { right: -20px; }
+    .recipe-card5 .recipe-info-box { left: -30px; }
+    .recipe-card6 .recipe-info-box { right: -30px; }
+    .recipe-card7 .recipe-info-box { left: -30px; }
+    .recipe-card8 .recipe-info-box { right: -20px; }
+}

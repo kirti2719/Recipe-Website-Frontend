@@ -1,0 +1,438 @@
+:root {
+  --primary-brown: #FEBC1D;    /* Golden yellow */
+  --secondary-brown: #FFD577;  /* Light golden */
+  --cream-color: #FFDF99;     /* Soft cream */
+  --text-color: #FFEBB9;      /* Very light cream */
+  --danger-color: #FEDE91;    /* Light golden peach */
+  --danger-hover: #c82333;    /* Keeping this for contrast in danger states */
+}
+
+/* Main navbar container */
+.navbar-container {
+  position: fixed;
+  left: 0;
+  top: 0; 
+  height: 100vh;
+  z-index: 1000;
+  background-color: #f5b356;
+  padding: 10px;
+}
+
+.navbar {
+  background-color: #BB7C23;
+  height: calc(100vh - 20px);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar.expanded {
+  width: 250px;
+}
+
+.navbar.collapsed {
+  width: 60px;
+}
+
+/* Logo section */
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.logo {
+  max-width: 90px;
+  transition: max-width 0.3s ease;
+}
+
+.username-text {
+  margin-left: 8px;
+  color: #333;
+}
+
+.user-dropdown .profile-option,
+.user-dropdown .logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar.expanded .logo {
+  max-width: 280px;
+}
+
+/* Menu section */
+.menu-wrapper {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0;
+  overflow-y: auto;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item-container {
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 5px;
+  position: relative;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff; /* Updated to use text color variable */
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background-color: #fff;
+  transform: translateX(5px);
+  color: #000;
+}
+
+.menu-icon {
+  color: #fff; /* Updated icon color */
+  font-size: 20px;
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.menu-item:hover .menu-icon {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+.menu-label {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar.expanded .menu-label {
+  opacity: 1;
+}
+
+.menu-item.active {
+  background-color: #fff;
+  color: var(--text-color);
+}
+
+.menu-item.active .menu-icon {
+  color: var(--text-color);
+}
+
+.menu-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-brown);
+  border-radius: 20px;
+}
+
+/* Content container adjustment */
+.content-container {
+  margin-left: 80px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.navbar.expanded ~ .content-container {
+  margin-left: 270px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.drawer-profile {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.5rem;
+  gap: 10px;
+  transition: color var(--transition-standard);
+}
+
+.profile-link:hover {
+  color: var(--primary-color);
+}
+
+/* User Menu Dropdown */
+.user-menu {
+  position: relative;
+  width: 100%;
+}
+
+.username-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 10px;
+  transition: color var(--transition-standard);
+  width: 100%;
+  justify-content: center;
+}
+
+.username-button:hover {
+  color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.profile-icon {
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+/* Dropdown Menu */
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  box-shadow: var(--shadow-standard);
+  border-radius: 8px;
+  padding: 10px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1200;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.profile-option,
+.logout-button,
+.delete-account-button {
+  padding: 12px 16px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.profile-option {
+  color: var(--primary-color);
+}
+
+.profile-option:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Logout Button */
+.logout-button {
+  color: red;
+}
+
+.logout-button:hover {
+  background: #ffe5e5;
+  color: darkred;
+}
+
+/* Delete Account Button */
+.delete-account-button {
+  background: red;
+  color: white;
+  font-weight: bold;
+}
+
+.delete-account-button:hover {
+  background: darkred;
+}
+
+/* Add a small triangle/arrow pointing down to the dropdown */
+.user-dropdown::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent;
+}
+
+/* Show only profile icon when navbar is collapsed */
+.navbar.collapsed .profile-link {
+  display: none;
+}
+
+.navbar.collapsed .profile-icon {
+  display: inline-block;
+}
+
+/* Show profile text and username when navbar is expanded */
+.navbar.expanded .profile-link {
+  display: flex;
+}
+
+.navbar.expanded .profile-icon {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    padding: 5px;
+  }
+
+  .navbar.expanded {
+    width: 200px;
+  }
+
+  .navbar.collapsed {
+    width: 50px;
+  }
+
+  .logo {
+    max-width: 30px;
+  }
+
+  .navbar.expanded .logo {
+    max-width: 80px;
+  }
+
+  .menu-label {
+    font-size: 14px;
+  }
+
+  .profile-dropdown {
+    min-width: 150px;
+  }
+
+  .content-container {
+    margin-left: 60px;
+  }
+
+  .navbar.expanded ~ .content-container {
+    margin-left: 210px;
+  }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+  .navbar-container {
+    padding: 3px;
+  }
+
+  .navbar.expanded {
+    width: 180px;
+  }
+
+  .navbar.collapsed {
+    width: 45px;
+  }
+
+  .menu-item {
+    padding: 10px;
+  }
+
+  .profile-dropdown {
+    min-width: 130px;
+  }
+
+  .dropdown-item {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) {
+  .menu-item:hover {
+    transform: none;
+  }
+
+  .menu-item:active {
+    background-color: var(--secondary-brown);
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --primary-brown: #FEBC1D;
+    --secondary-brown: #FFD577;
+    --text-color: #FFEBB9;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .menu-item,
+  .profile-dropdown,
+  .profile-icon {
+    transition: none;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
